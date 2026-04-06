@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Spinny Repairs Limited – E-Bike & Cycle Specialists</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --navy: #1e2d5a;
+    --navy-light: #243470;
+    --yellow: #f5c518;
+    --yellow-pale: #fff9e0;
+    --white: #ffffff;
+    --off-white: #f8f7f3;
+    --text: #1a1a2e;
+    --text-muted: #6b7280;
+    --border: #e5e3db;
+    --shadow: 0 4px 32px rgba(30,45,90,0.10);
+    --radius: 16px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--off-white);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    height: 68px;
+    background: rgba(248,247,243,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    transition: box-shadow .3s;
+  }
+  nav.scrolled { box-shadow: 0 2px 24px rgba(30,45,90,0.10); }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+  .nav-logo img {
+    width: 40px; height: 40px;
+    object-fit: contain;
+    border-radius: 50%;
+    background: var(--navy);
+    padding: 3px;
+  }
+  .nav-logo-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    color: var(--navy);
+    letter-spacing: 1px;
+    line-height: 1;
+  }
+  .nav-logo-text span { color: var(--yellow); }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: .875rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    letter-spacing: .5px;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--navy); }
+
+  .nav-cta {
+    background: var(--navy);
+    color: var(--white) !important;
+    padding: 9px 22px;
+    border-radius: 40px;
+    font-size: .85rem !important;
+    transition: background .2s, transform .15s !important;
+  }
+  .nav-cta:hover { background: var(--navy-light) !important; transform: translateY(-1px); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 100px 7% 60px;
+    gap: 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  #hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 80% 20%, rgba(245,197,24,0.12) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 80%, rgba(30,45,90,0.06) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--yellow);
+    color: var(--navy);
+    padding: 5px 14px;
+    border-radius: 40px;
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .hero-tag::before {
+    content: '';
+    width: 7px; height: 7px;
+    background: var(--navy);
+    border-radius: 50%;
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 6vw, 5.5rem);
+    line-height: .95;
+    color: var(--navy);
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+  }
+  .hero-title .accent { color: var(--yellow); -webkit-text-stroke: 0px; }
+  .hero-title .outline {
+    -webkit-text-stroke: 2px var(--navy);
+    color: transparent;
+  }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 460px;
+    margin-bottom: 40px;
+    font-weight: 300;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--navy);
+    color: var(--white);
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: .95rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: transform .2s, box-shadow .2s;
+    box-shadow: 0 6px 24px rgba(30,45,90,0.25);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(30,45,90,0.30); }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--white);
+    color: var(--navy);
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: .95rem;
+    font-weight: 500;
+    text-decoration: none;
+    border: 2px solid var(--border);
+    transition: border-color .2s, transform .2s;
+  }
+  .btn-secondary:hover { border-color: var(--navy); transform: translateY(-2px); }
+
+  .btn-whatsapp {
+    background: #25D366;
+    color: white;
+    box-shadow: 0 6px 24px rgba(37,211,102,0.30);
+  }
+  .btn-whatsapp:hover { box-shadow: 0 10px 32px rgba(37,211,102,0.40); }
+
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  .hero-badge-ring {
+    width: clamp(300px, 40vw, 480px);
+    height: clamp(300px, 40vw, 480px);
+    border-radius: 50%;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 24px 80px rgba(30,45,90,0.30);
+    animation: pulse-ring 4s ease-in-out infinite;
+  }
+  @keyframes pulse-ring {
+    0%,100% { box-shadow: 0 24px 80px rgba(30,45,90,0.30), 0 0 0 0 rgba(245,197,24,0.15); }
+    50% { box-shadow: 0 24px 80px rgba(30,45,90,0.30), 0 0 0 24px rgba(245,197,24,0); }
+  }
+  .hero-logo-img {
+    width: 65%;
+    height: 65%;
+    object-fit: contain;
+    animation: spin-slow 20s linear infinite;
+    opacity: .15;
+    position: absolute;
+  }
+  @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  .hero-logo-center {
+    width: 55%;
+    height: 55%;
+    object-fit: contain;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-stats {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0;
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .stat-item {
+    padding: 16px 28px;
+    text-align: center;
+    border-right: 1px solid var(--border);
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    color: var(--navy);
+    line-height: 1;
+  }
+  .stat-num span { color: var(--yellow); }
+  .stat-label { font-size: .72rem; color: var(--text-muted); font-weight: 500; letter-spacing: .5px; text-transform: uppercase; }
+
+  /* ── SECTION BASE ── */
+  section { padding: 100px 7%; }
+  .section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--navy);
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .section-tag::before {
+    content: '';
+    width: 24px; height: 2px;
+    background: var(--yellow);
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 4vw, 3.8rem);
+    color: var(--navy);
+    letter-spacing: 1px;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .section-sub {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 560px;
+    font-weight: 300;
+  }
+
+  /* ── SERVICES ── */
+  #services { background: var(--navy); }
+  #services .section-tag { color: var(--yellow); }
+  #services .section-tag::before { background: var(--yellow); }
+  #services .section-title { color: var(--white); }
+  #services .section-sub { color: rgba(255,255,255,0.6); }
+
+  .packages-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 56px;
+  }
+
+  .package-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: var(--radius);
+    padding: 36px 32px;
+    position: relative;
+    transition: transform .3s, background .3s;
+    overflow: hidden;
+  }
+  .package-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: rgba(255,255,255,0.2);
+  }
+  .package-card.featured {
+    background: var(--yellow);
+    border-color: var(--yellow);
+  }
+  .package-card.featured::before { background: var(--navy); }
+  .package-card.featured .pkg-title,
+  .package-card.featured .pkg-price,
+  .package-card.featured .pkg-feature { color: var(--navy); }
+  .package-card.featured .pkg-sub { color: rgba(30,45,90,0.6); }
+  .package-card:not(.featured):hover { transform: translateY(-6px); background: rgba(255,255,255,0.10); }
+  .package-card.featured:hover { transform: translateY(-6px); }
+
+  .pkg-badge {
+    display: inline-block;
+    background: var(--navy);
+    color: var(--yellow);
+    font-size: .7rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 40px;
+    margin-bottom: 20px;
+  }
+
+  .pkg-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    color: var(--white);
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .pkg-sub { font-size: .85rem; color: rgba(255,255,255,0.5); margin-bottom: 28px; }
+
+  .pkg-features { list-style: none; margin-bottom: 32px; }
+  .pkg-feature {
+    color: var(--white);
+    font-size: .9rem;
+    font-weight: 400;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .pkg-feature::before {
+    content: '✓';
+    width: 20px; height: 20px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .7rem;
+    flex-shrink: 0;
+  }
+  .package-card.featured .pkg-feature::before { background: rgba(30,45,90,0.15); }
+
+  .pkg-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.2rem;
+    color: var(--white);
+    letter-spacing: 1px;
+    line-height: 1;
+  }
+  .pkg-price sup { font-size: 1.4rem; vertical-align: super; }
+
+  /* ── PRICING TABLE ── */
+  #pricing { background: var(--off-white); }
+
+  .pricing-tabs {
+    display: flex;
+    gap: 8px;
+    margin: 40px 0 32px;
+    background: var(--white);
+    padding: 6px;
+    border-radius: 50px;
+    width: fit-content;
+    border: 1px solid var(--border);
+  }
+  .tab-btn {
+    padding: 10px 24px;
+    border-radius: 40px;
+    border: none;
+    background: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .85rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all .25s;
+  }
+  .tab-btn.active {
+    background: var(--navy);
+    color: var(--white);
+    box-shadow: 0 4px 12px rgba(30,45,90,0.2);
+  }
+
+  .pricing-panel { display: none; }
+  .pricing-panel.active { display: block; }
+
+  .pricing-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+  }
+  .pricing-table thead tr { background: var(--navy); }
+  .pricing-table thead th {
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: .8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 16px 24px;
+    text-align: left;
+  }
+  .pricing-table thead th:last-child { text-align: right; }
+
+  .pricing-table tbody tr { border-bottom: 1px solid var(--border); transition: background .15s; }
+  .pricing-table tbody tr:last-child { border-bottom: none; }
+  .pricing-table tbody tr:hover { background: var(--yellow-pale); }
+
+  .pricing-table td {
+    padding: 14px 24px;
+    font-size: .9rem;
+    color: var(--text);
+    font-weight: 400;
+  }
+  .pricing-table td:last-child {
+    text-align: right;
+    font-family: 'DM Mono', monospace;
+    font-size: .9rem;
+    color: var(--navy);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .category-row td {
+    background: rgba(245,197,24,0.12);
+    color: var(--navy);
+    font-weight: 600;
+    font-size: .8rem;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    padding: 10px 24px;
+  }
+
+  /* ── WHY US ── */
+  #why {
+    background: var(--white);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .why-card {
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .why-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+  .why-icon {
+    width: 44px; height: 44px;
+    background: var(--navy);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    font-size: 1.2rem;
+  }
+  .why-card h4 {
+    font-size: .95rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .why-card p { font-size: .85rem; color: var(--text-muted); line-height: 1.6; }
+
+  /* ── CONTACT ── */
+  #contact {
+    background: var(--navy);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  #contact::before {
+    content: '';
+    position: absolute;
+    top: -100px; left: 50%;
+    transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(245,197,24,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  #contact .section-title { color: var(--white); }
+  #contact .section-tag { color: var(--yellow); margin: 0 auto 16px; display: flex; justify-content: center; }
+  #contact .section-tag::before { background: var(--yellow); }
+  #contact .section-sub { color: rgba(255,255,255,0.6); margin: 0 auto 48px; text-align: center; max-width: 480px; }
+
+  .contact-methods {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 60px;
+  }
+  .contact-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: var(--radius);
+    padding: 28px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--white);
+    min-width: 160px;
+    transition: background .2s, transform .2s;
+  }
+  .contact-card:hover { background: rgba(255,255,255,0.13); transform: translateY(-4px); }
+  .contact-card .cc-icon { font-size: 1.8rem; }
+  .contact-card .cc-label { font-size: .8rem; color: rgba(255,255,255,0.5); font-weight: 500; letter-spacing: .5px; text-transform: uppercase; }
+  .contact-card .cc-value { font-size: .9rem; font-weight: 500; }
+  .contact-card.wa { background: rgba(37,211,102,0.15); border-color: rgba(37,211,102,0.3); }
+  .contact-card.wa:hover { background: rgba(37,211,102,0.25); }
+
+  .map-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--yellow);
+    color: var(--navy);
+    padding: 15px 32px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: .95rem;
+    text-decoration: none;
+    transition: transform .2s, box-shadow .2s;
+    box-shadow: 0 6px 24px rgba(245,197,24,0.3);
+  }
+  .map-link:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(245,197,24,0.4); }
+
+  /* ── SOCIALS ── */
+  #socials {
+    background: var(--off-white);
+    text-align: center;
+    padding: 60px 7%;
+  }
+  .socials-inner { display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap; }
+
+  .social-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 28px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: .9rem;
+    transition: transform .2s, box-shadow .2s;
+    border: 2px solid var(--border);
+    color: var(--text);
+    background: var(--white);
+  }
+  .social-btn:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: transparent; }
+  .social-btn.instagram { --accent: #E4405F; }
+  .social-btn.tiktok { --accent: #000000; }
+  .social-btn.facebook { --accent: #1877F2; }
+  .social-btn.youtube { --accent: #FF0000; }
+  .social-btn:hover { background: var(--accent); color: white; }
+  .social-btn svg { width: 20px; height: 20px; flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #111827;
+    color: rgba(255,255,255,0.4);
+    text-align: center;
+    padding: 28px 7%;
+    font-size: .82rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  footer a { color: var(--yellow); text-decoration: none; }
+
+  /* ── WHATSAPP FLOAT ── */
+  .wa-float {
+    position: fixed;
+    bottom: 28px; right: 28px;
+    z-index: 999;
+    width: 60px; height: 60px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 28px rgba(37,211,102,0.45);
+    text-decoration: none;
+    transition: transform .2s, box-shadow .2s;
+    animation: wa-bounce 2.5s ease-in-out infinite;
+  }
+  @keyframes wa-bounce {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  .wa-float:hover { transform: scale(1.1) !important; animation: none; box-shadow: 0 10px 36px rgba(37,211,102,0.55); }
+  .wa-float svg { width: 30px; height: 30px; fill: white; }
+
+  /* ── ANIMATIONS ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    #hero { grid-template-columns: 1fr; padding: 120px 6% 80px; }
+    .hero-visual { display: none; }
+    .packages-grid { grid-template-columns: 1fr; }
+    #why { grid-template-columns: 1fr; gap: 48px; padding: 80px 6%; }
+    .nav-links { display: none; }
+  }
+  @media (max-width: 600px) {
+    section { padding: 80px 5%; }
+    #contact { padding: 80px 5%; }
+    .pricing-tabs { flex-wrap: wrap; width: 100%; border-radius: 12px; }
+    .stat-item { padding: 12px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">
+    <img src="logo.png" alt="Spinny Repairs" onerror="this.style.display='none'"/>
+    <div class="nav-logo-text">SPINNY<br/><span>REPAIRS</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="https://wa.me/447495753650?text=Hi%20Spinny%20Repairs!%20I'd%20like%20to%20book%20a%20repair." target="_blank" class="nav-cta">Book Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-content">
+    <div class="hero-tag">London's E-Bike Specialists</div>
+    <h1 class="hero-title">
+      KEEP YOUR<br/>
+      <span class="accent">WHEELS</span><br/>
+      <span class="outline">SPINNING</span>
+    </h1>
+    <p class="hero-sub">Expert e-bike and cycle repairs, servicing &amp; diagnostics. Same-day service available — DM or WhatsApp to get booked in today.</p>
+    <div class="hero-btns">
+      <a href="https://wa.me/447495753650?text=Hi%20Spinny%20Repairs!%20I'd%20like%20to%20book%20a%20repair." target="_blank" class="btn-primary btn-whatsapp">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.531 5.852L.057 23.25c-.072.27.015.557.217.742.148.136.342.21.54.21.068 0 .136-.009.203-.027l5.687-1.487A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.698-.504-5.254-1.39l-.377-.218-3.377.883.9-3.288-.24-.384A10 10 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" fill-rule="evenodd"/></svg>
+        WhatsApp Us
+      </a>
+      <a href="#services" class="btn-secondary">View Services ↓</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-badge-ring">
+      <!-- Decorative spinning ring SVG -->
+      <svg class="hero-logo-img" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="100" cy="100" r="90" fill="none" stroke="#f5c518" stroke-width="1" stroke-dasharray="8 6"/>
+        <circle cx="100" cy="100" r="70" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1" stroke-dasharray="4 8"/>
+      </svg>
+      <!-- Inline SVG logo recreation -->
+      <svg class="hero-logo-center" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <!-- Outer circle -->
+        <circle cx="100" cy="100" r="85" fill="none" stroke="white" stroke-width="10"/>
+        <!-- S letter -->
+        <text x="52" y="130" font-family="Georgia, serif" font-size="88" font-weight="bold" fill="white" letter-spacing="-2">S</text>
+        <!-- R letter -->
+        <text x="88" y="145" font-family="Georgia, serif" font-size="100" font-weight="bold" fill="white">R</text>
+        <!-- Yellow wheel -->
+        <circle cx="95" cy="118" r="22" fill="none" stroke="#f5c518" stroke-width="4"/>
+        <circle cx="95" cy="118" r="4" fill="#f5c518"/>
+        <line x1="95" y1="96" x2="95" y2="140" stroke="#f5c518" stroke-width="2"/>
+        <line x1="73" y1="118" x2="117" y2="118" stroke="#f5c518" stroke-width="2"/>
+        <line x1="79" y1="102" x2="111" y2="134" stroke="#f5c518" stroke-width="2"/>
+        <line x1="111" y1="102" x2="79" y2="134" stroke="#f5c518" stroke-width="2"/>
+        <line x1="73" y1="111" x2="117" y2="125" stroke="#f5c518" stroke-width="1.5"/>
+        <line x1="73" y1="125" x2="117" y2="111" stroke="#f5c518" stroke-width="1.5"/>
+        <line x1="82" y1="99" x2="108" y2="137" stroke="#f5c518" stroke-width="1.5"/>
+        <line x1="108" y1="99" x2="82" y2="137" stroke="#f5c518" stroke-width="1.5"/>
+      </svg>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">24<span>hr</span></div>
+        <div class="stat-label">Turnaround</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">£<span>75</span></div>
+        <div class="stat-label">From</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">E<span>+</span></div>
+        <div class="stat-label">E-Bike Ready</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="fade-up">
+    <div class="section-tag">Service Packages</div>
+    <h2 class="section-title">FIND YOUR FIT</h2>
+    <p class="section-sub">Three tiers of care for every ride. All packages include a final quality check before we hand your bike back.</p>
+  </div>
+  <div class="packages-grid fade-up">
+    <div class="package-card">
+      <div class="pkg-title">BASIC SERVICE</div>
+      <div class="pkg-sub">Perfect for regular maintenance</div>
+      <ul class="pkg-features">
+        <li class="pkg-feature">Brakes inspection &amp; adjustment</li>
+        <li class="pkg-feature">Gear check &amp; adjustment</li>
+        <li class="pkg-feature">Safety check</li>
+        <li class="pkg-feature">Bolts torque check</li>
+        <li class="pkg-feature">Tyre pressure</li>
+      </ul>
+      <div class="pkg-price"><sup>£</sup>75</div>
+    </div>
+    <div class="package-card featured">
+      <div class="pkg-badge">⭐ Most Popular</div>
+      <div class="pkg-title">INTERIM SERVICE</div>
+      <div class="pkg-sub">All Basic + extras for regular riders</div>
+      <ul class="pkg-features">
+        <li class="pkg-feature">All Basic Service items</li>
+        <li class="pkg-feature">Drivetrain clean</li>
+        <li class="pkg-feature">Wheel trues</li>
+        <li class="pkg-feature">Diagnostics</li>
+        <li class="pkg-feature">24 hour turn around</li>
+      </ul>
+      <div class="pkg-price"><sup>£</sup>105</div>
+    </div>
+    <div class="package-card">
+      <div class="pkg-title">FULL OVERHAUL</div>
+      <div class="pkg-sub">Complete restoration &amp; deep clean</div>
+      <ul class="pkg-features">
+        <li class="pkg-feature">All Basic &amp; Interim items</li>
+        <li class="pkg-feature">Full stripdown</li>
+        <li class="pkg-feature">Deep clean</li>
+        <li class="pkg-feature">Bearing service</li>
+        <li class="pkg-feature">Full safety check</li>
+        <li class="pkg-feature">Electrical diagnostic</li>
+      </ul>
+      <div class="pkg-price"><sup>£</sup>150</div>
+    </div>
+  </div>
+  <div style="text-align:center; margin-top:48px;" class="fade-up">
+    <a href="https://wa.me/447495753650?text=Hi!%20I'd%20like%20to%20book%20a%20service%20package." target="_blank" class="btn-primary" style="background:var(--yellow);color:var(--navy);">Book a Package →</a>
+  </div>
+</section>
+
+<!-- PRICING TABLE -->
+<section id="pricing">
+  <div class="fade-up">
+    <div class="section-tag">Individual Repairs</div>
+    <h2 class="section-title">TRANSPARENT PRICING</h2>
+    <p class="section-sub">No hidden fees. Fixed prices across all our repair categories, from brake bleeds to full electrical diagnostics.</p>
+  </div>
+  <div class="pricing-tabs fade-up" id="pricingTabs">
+    <button class="tab-btn active" data-tab="diagnostics">Diagnostics</button>
+    <button class="tab-btn" data-tab="electrical">Electrical</button>
+    <button class="tab-btn" data-tab="brakes">Brakes</button>
+    <button class="tab-btn" data-tab="drivetrain">Drivetrain</button>
+    <button class="tab-btn" data-tab="tyres">Tyres</button>
+  </div>
+
+  <!-- Diagnostics -->
+  <div class="pricing-panel active fade-up" id="tab-diagnostics">
+    <table class="pricing-table">
+      <thead><tr><th>Service</th><th>Price</th></tr></thead>
+      <tbody>
+        <tr class="category-row"><td colspan="2">Diagnostics &amp; General</td></tr>
+        <tr><td>E-Bike Diagnostic Check (system scan, error codes, test ride)</td><td>£30</td></tr>
+        <tr><td>Full Safety Inspection (brakes, drivetrain, electrics, torque check)</td><td>£50</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Electrical -->
+  <div class="pricing-panel fade-up" id="tab-electrical">
+    <table class="pricing-table">
+      <thead><tr><th>Service</th><th>Price</th></tr></thead>
+      <tbody>
+        <tr class="category-row"><td colspan="2">Electrical</td></tr>
+        <tr><td>Electrical Fault Tracing (wiring, connectors, sensors)</td><td>£40</td></tr>
+        <tr><td>Controller Replacement &amp; Setup</td><td>£120</td></tr>
+        <tr><td>Motor Service / Swap – Hub Drive</td><td>£100</td></tr>
+        <tr><td>Motor Service / Swap – Mid Drive</td><td>£200</td></tr>
+        <tr><td>Lighting Repair – Front</td><td>£20</td></tr>
+        <tr><td>Lighting Repair – Rear</td><td>£40</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Brakes -->
+  <div class="pricing-panel fade-up" id="tab-brakes">
+    <table class="pricing-table">
+      <thead><tr><th>Service</th><th>Price</th></tr></thead>
+      <tbody>
+        <tr class="category-row"><td colspan="2">Brakes</td></tr>
+        <tr><td>Brake Adjustment</td><td>£20</td></tr>
+        <tr><td>Brake Pad Replacement (per end)</td><td>£13</td></tr>
+        <tr><td>Hydraulic Brake Bleed (per end)</td><td>£35</td></tr>
+        <tr><td>Full Brake System Overhaul</td><td>£90</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Drivetrain -->
+  <div class="pricing-panel fade-up" id="tab-drivetrain">
+    <table class="pricing-table">
+      <thead><tr><th>Service</th><th>Price</th></tr></thead>
+      <tbody>
+        <tr class="category-row"><td colspan="2">Drivetrain</td></tr>
+        <tr><td>Gear Indexing / Adjustment</td><td>£15</td></tr>
+        <tr><td>Chain Replacement</td><td>£25</td></tr>
+        <tr><td>Cassette / Freewheel Replacement</td><td>£30</td></tr>
+        <tr><td>Full Drivetrain Clean &amp; Service</td><td>£60</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Tyres -->
+  <div class="pricing-panel fade-up" id="tab-tyres">
+    <table class="pricing-table">
+      <thead><tr><th>Service</th><th>Price</th></tr></thead>
+      <tbody>
+        <tr class="category-row"><td colspan="2">Tyres &amp; Wheels</td></tr>
+        <tr><td>Tyre / Tube Replacement (per wheel)</td><td>£20</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p style="margin-top:20px; font-size:.82rem; color:var(--text-muted);">* All prices are for labour. Parts are charged separately at cost. Subject to change.</p>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="fade-up">
+    <div class="section-tag">Why Spinny</div>
+    <h2 class="section-title">BUILT ON TRUST &amp; EXPERTISE</h2>
+    <p class="section-sub">We live and breathe bikes. Whether it's your daily commuter or prized e-bike, you're in safe hands.</p>
+    <a href="https://wa.me/447495753650?text=Hi!%20I%20have%20a%20question%20about%20my%20bike." target="_blank" class="btn-primary" style="margin-top:32px; display:inline-flex;">Get in Touch →</a>
+  </div>
+  <div class="why-grid fade-up">
+    <div class="why-card">
+      <div class="why-icon">⚡</div>
+      <h4>E-Bike Specialists</h4>
+      <p>Fully equipped for electrical diagnostics, motor swaps, and controller setups.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">⏱️</div>
+      <h4>Same-Day Service</h4>
+      <p>Need it back fast? We offer same-day turnaround on most repairs.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🔧</div>
+      <h4>All Brands Welcome</h4>
+      <p>Road, MTB, e-bike, cargo — we service them all with equal care.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">💬</div>
+      <h4>Direct Communication</h4>
+      <p>WhatsApp us directly for updates, quotes, and booking — no call queues.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="fade-up">
+    <div class="section-tag">Get In Touch</div>
+    <h2 class="section-title">LET'S GET<br/>YOUR BIKE BACK</h2>
+    <p class="section-sub">DM us, WhatsApp, or drop us an email. Same-day service available — just reach out.</p>
+  </div>
+  <div class="contact-methods fade-up">
+    <a href="https://wa.me/447495753650?text=Hi%20Spinny%20Repairs!%20I'd%20like%20to%20book%20a%20repair." target="_blank" class="contact-card wa">
+      <div class="cc-icon">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.531 5.852L.057 23.25c-.072.27.015.557.217.742.148.136.342.21.54.21.068 0 .136-.009.203-.027l5.687-1.487A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.698-.504-5.254-1.39l-.377-.218-3.377.883.9-3.288-.24-.384A10 10 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" fill-rule="evenodd"/></svg>
+      </div>
+      <div class="cc-label">WhatsApp</div>
+      <div class="cc-value">+44 7495 753650</div>
+    </a>
+    <a href="mailto:spinnyrepairs@gmail.com" class="contact-card">
+      <div class="cc-icon">✉️</div>
+      <div class="cc-label">Email</div>
+      <div class="cc-value">spinnyrepairs@gmail.com</div>
+    </a>
+    <a href="https://www.instagram.com/spinnyrepairs/" target="_blank" class="contact-card">
+      <div class="cc-icon">📸</div>
+      <div class="cc-label">Instagram</div>
+      <div class="cc-value">@spinnyrepairs</div>
+    </a>
+  </div>
+  <div class="fade-up">
+    <a href="https://share.google/6bEyi1leXCBBi4UIO" target="_blank" class="map-link">
+      📍 Find Us on Google Maps
+    </a>
+  </div>
+</section>
+
+<!-- SOCIALS -->
+<section id="socials">
+  <div class="section-tag" style="justify-content:center; display:flex; margin-bottom:24px;">Follow Along</div>
+  <div class="socials-inner">
+    <a href="https://www.instagram.com/spinnyrepairs/" target="_blank" class="social-btn instagram" style="--accent:#E4405F">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      Instagram
+    </a>
+    <a href="https://www.tiktok.com/@spinnyrepairs" target="_blank" class="social-btn tiktok" style="--accent:#000000">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.79 1.54V6.78a4.85 4.85 0 01-1.02-.09z"/></svg>
+      TikTok
+    </a>
+    <a href="https://www.facebook.com/p/Spinny-Repairs-Limited-61581541661536/" target="_blank" class="social-btn facebook" style="--accent:#1877F2">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      Facebook
+    </a>
+    <a href="https://www.youtube.com/@spinnyrepairs" target="_blank" class="social-btn youtube" style="--accent:#FF0000">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+      YouTube
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2025 Spinny Repairs Limited. All rights reserved.</span>
+  <span>Made with 🚴 in London &nbsp;·&nbsp; <a href="mailto:spinnyrepairs@gmail.com">spinnyrepairs@gmail.com</a></span>
+</footer>
+
+<!-- WhatsApp Float Button -->
+<a href="https://wa.me/447495753650?text=Hi%20Spinny%20Repairs!%20I'd%20like%20to%20book%20a%20repair." target="_blank" class="wa-float" title="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.531 5.852L.057 23.25c-.072.27.015.557.217.742.148.136.342.21.54.21.068 0 .136-.009.203-.027l5.687-1.487A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.698-.504-5.254-1.39l-.377-.218-3.377.883.9-3.288-.24-.384A10 10 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" fill-rule="evenodd"/></svg>
+</a>
+
+<script>
+  // Navbar scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Pricing tabs
+  document.getElementById('pricingTabs').addEventListener('click', e => {
+    const btn = e.target.closest('.tab-btn');
+    if (!btn) return;
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.pricing-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+  });
+
+  // Fade-up on scroll
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
